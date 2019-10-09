@@ -1,0 +1,48 @@
+.navbar {
+    min-height: 80px;
+    background-color: #3b5998;
+  }
+
+  header {
+    background-color: #3b5998;
+
+  }
+  
+  .navbar-brand {
+    font-size: 25px;
+    font-family: Arial;
+    color: #ffffff;
+    padding: 0 15px;
+    height: 80px;
+    line-height: 80px;
+  }
+  
+  .navbar-toggle {
+    /* (80px - button height 34px) / 2 = 23px */
+    margin-top: 23px;
+    padding: 9px 10px !important;
+  }
+
+  form.navbar-form.navbar-right.login {
+    padding-top: 15px;
+}
+
+section.class-cad {
+  background-image: linear-gradient(#fff,#d3dce8);
+  height: 600;
+}
+.btn-thrid{
+  background-color: #4267b2;
+  border-color: #29487d;
+  color: #fff;
+
+}
+
+.foot-person{
+  padding-top: 20px;
+
+}
+
+img.mapa-init {
+  padding: 70px 0 30 0px;
+}
