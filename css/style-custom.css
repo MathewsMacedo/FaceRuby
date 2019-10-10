@@ -29,7 +29,7 @@
 
 section.class-cad {
   background-image: linear-gradient(#fff,#d3dce8);
-  height: 600;
+
 }
 .btn-thrid{
   background-color: #4267b2;
@@ -45,4 +45,60 @@ section.class-cad {
 
 img.mapa-init {
   padding: 70px 0 30 0px;
+}
+
+.cad-cadastro > h2{
+  font-family: Arial;
+  font-weight: bolder;
+  padding-left: 15px;
+}
+
+.cad-cadastro > .sub-title{
+  padding-left: 18px;
+}
+
+
+.cad-cadastro {
+  text-align: left;
+}
+
+form.new-user {
+  padding: 15px 0 0px 0px;
+}
+
+.col-md-3 {
+  padding-right: 0px;
+}
+
+.col-sm-6 {
+  padding-right: 0px;
+}
+
+input[type=checkbox], input[type=radio] {
+  margin: 4px 15px 0px;
+}
+
+label#genero {
+  color: #90949c;
+  font-size: 17px;
+  padding-bottom: 5px;
+}
+
+.termos-uso {
+  width: 330px;
+  padding-top: 20px;
+}
+
+.btn-cadastrar {
+  margin-top: 30px;
+  padding: 10px 75 10px;
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+@media(max-width:768px){
+
+
+
+
 }
