@@ -66,6 +66,7 @@ img.mapa-init {
   padding: 70px 0 30 0px;
   width: 100%;
   height: auto;
+  max-width: 500px;
 }
 
 .cad-cadastro > h2{
@@ -96,8 +97,9 @@ form.new-user {
 }
 
 @media (max-width:991px){
-  .col-sm-6 {
+  .col-sm-6, .col-md-3{
     width:100%;
+    max-width: 600px;
   }
 }
 
@@ -112,7 +114,8 @@ label#genero {
 }
 
 .termos-uso {
-  width: 330px;
+  width: auto;
+  max-width: 330px;
   padding-top: 20px;
 }
 
