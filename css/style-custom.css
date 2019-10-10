@@ -1,3 +1,5 @@
+
+
 .navbar {
     min-height: 80px;
     background-color: #3b5998;
@@ -7,14 +9,26 @@
     background-color: #3b5998;
 
   }
+
+  a.navbar-brand {
+    padding-top: 10px;
+}
+
+
   
   .navbar-brand {
-    font-size: 25px;
-    font-family: Arial;
+    font-size: 40px;
     color: #ffffff;
     padding: 0 15px;
     height: 80px;
     line-height: 80px;
+    font-family: Facebold, Arial, Helvetica, sans-serif;
+    font-weight: normal;
+  }
+
+  .navbar-brand:hover{
+  
+    color: #ffffff;
   }
   
   .navbar-toggle {
@@ -41,6 +55,11 @@ section.class-cad {
 .foot-person{
   padding-top: 20px;
 
+}
+
+.banner-cor {
+  color: #0e385f;
+  font-weight: bold;
 }
 
 img.mapa-init {
@@ -93,7 +112,19 @@ label#genero {
   margin-top: 30px;
   padding: 10px 75 10px;
   font-size: 18px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
+}
+
+a.navbar-form.esqueci-senha {
+  float: right;
+  font-size: 12px;
+  padding-right: 120px;
+  text-decoration: none;
+  color: #9cb4d8;
+}
+
+.rodape-cadastro {
+  padding: 0 0 30px 10px;
 }
 
 @media(max-width:768px){

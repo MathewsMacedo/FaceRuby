@@ -6,32 +6,35 @@
         <script src="./js/jquery.min.js"></script>
         <script src="./js/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="./css/style-custom.css">
+        <link rel="stylesheet" type="text/css" href="./css/font_stylesheet.css">
     </head>
     <body>
         <header>
             <!--Nav Bar-->
             <nav class="navbar navbar-expand navbar-dark bg-info">
                     <div class="container justify-content-md-end">
-                <a class="navbar-brand" href="login.html">FaceRuby</a>
+                <a class="navbar-brand" href="login.html">faceruby</a>
                 <form class="navbar-form navbar-right login">
                         <input class="form-control mr-sm-2" type="email"  id="email" name="email" placeholder="E-mail" aria-label="email">
                         <input class="form-control mr-sm-2" type="password"  id="senha" name="senha" placeholder="Senha" aria-label="senha">
                         <button class="btn btn-thrid my-2 my-sm-0" type="submit">Entrar</button>
+                        <div><a class="navbar-form esqueci-senha" href="/login.html">Esqueceu sua senha?</a></div>
                 </form>
+               
             </nav>
         </header>
         <section class="class-cad">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6 banner-cor">
                         <h2>Venha se aventurar!</h2>
-                        <div class="sub-title">FaceRuby permite você ajudar a comunidade developer e compartilhar suas idéias.</div>
+                        <div class="sub-title">FaceRuby permite que você ajude a comunidade developer e compartilhe suas idéias.</div>
                         <img class="mapa-init" src="./img/mapa_face.png"/>
                     </div>
                     <div class="col-md-6">
                         <div class="cad-cadastro">
                             <h2>Crie sua conta</h2>
-                            <div class="sub-title">É rapido e facil. ;)</div>
+                            <div class="sub-title">É rápido e fácil. 😉</div>
 
                             <form class="new-user">
                                 <div class="container">
@@ -80,24 +83,21 @@
                                     <input type="radio" id="sexo" value="masculino" name="sexo"> Masculino
                                     <input type="radio" id="sexo" value="personalizado" name="sexo"> Personalizado
                                   </fieldset>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="termos-uso">
+                                <small>Ao clicar em Cadastre-se, você concorda com nossos Termos,
+                                   Política de Dados e Política de Cookies. Você pode receber notificações por
+                                   SMS e pode cancelar isso quando quiser.</small>
+                             </div>
+                            <button class="btn btn-success my-2 my-sm-0 btn-cadastrar" type="submit">Cadastre-se</button>
                         </div>
-                        <div class="termos-uso">
-                            <small>Ao clicar em Cadastre-se, você concorda com nossos Termos,
-                                 Política de Dados e Política de Cookies. Você pode receber notificações por
-                                  SMS e pode cancelar isso quando quiser.</small>
-
-                        </div>
-
-
-                        <button class="btn btn-success my-2 my-sm-0 btn-cadastrar" type="submit">Cadastre-se</button>
-                    </div>
                             </form>
 
                            
                         </div>
-                    </div>
+                        <div class="rodape-cadastro"><span>Crie repositorios, compartilhe, ajude e cresça.</span></div>
                 </div>       
         </div> 
         </section>
@@ -106,8 +106,8 @@
                 <small>Essa aplicação foi desenvolvida para estudo e teste da linguagem de Desenvolvimento Ruby on Rails </small><br/><br/>
                 <small>Desenvolvido por Matheus Macedo - <a href="https://github.com/MathewsMacedo"> GitHub MathewsMacedo</a></small><br/>
                 <small>LinkedIn Matheus Macedo - <a href="https://www.linkedin.com/in/matheus-smacedo/"> LinkedIn Matheus Macedo</a></small><br/>
-                <small>Email para contato - <a href="matheus.smacedo@hotmail.com"> matheus.smacedo@hotmail.com</a></small><br/><br/><br/><br/><br/><br/>
-                <small>FaceRuby © 2019 ~ 2999</small>
+                <small>Email para contato - <a href="mailto:matheus.smacedo@hotmail.com?" subject="FaceRuby Access"> matheus.smacedo@hotmail.com</a></small><br/><br/><br/>
+                <small>faceruby © 2019 ~ 9999</small>
             </div>
         </footer>
     </body>

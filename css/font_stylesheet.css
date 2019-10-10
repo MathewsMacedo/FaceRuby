@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'Facebold';
+    src: url('/font/Facebold.eot');
+    src: url('/font/Facebold.eot?#iefix') format('embedded-opentype'),
+        url('/font/Facebold.woff2') format('woff2'),
+        url('/font/Facebold.woff') format('woff'),
+        url('/font/FaceboldFacebold.svg#Facebold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
