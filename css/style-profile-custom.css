@@ -7,10 +7,18 @@ header{
     background-color: #4267b2;
     border-bottom: 1px solid #29487d;
     color: #fff;
+    border-radius: 0px;
+}
+
+@media(min-width:768px){
+   .navbar{
+    height: 40px;
+   }
 }
 
 a.navbar-brand{
-
+    padding: 10px 0px 0px 30px;
+    font-size: 18px;
     color:#fff;
 }
 
@@ -21,10 +29,183 @@ body{
 .btn-thrid{
     background-color: #d1d1d1;
     border-color: #ffffff;
-    color: #949494;
-  
-  }
+    border: none;
+    color: #bebebe;
+}
 
-.search {
-    margin-right: -10px;
+.form-group.form-pesquisa {
+    display: inline-flex;
+}
+
+.form-group.form-pesquisa {
+    border: 1px solid #525252;
+    border-radius: 4px !important;
+}
+
+button.button-default.btn-pesquisar {
+    margin-left: -8px;
+    border-radius: 4px;
+}
+input#pesquisar {
+    border: none;
+    height: 30px;
+}
+
+.container.pesquisa {
+    padding-top: 10px;
+}
+
+button.button-default.btn-pesquisar {
+    margin-top: 0px;
+    width: 40px;
+    border: unset;
+    background-color: #f5f5f5;
+    background-image: URL(/img/lupa.png);
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+
+.form-group.form-pesquisa {
+    max-width: 400px;
+    width: 100%;
+}
+
+.col-sm-4 {
+    padding-left: 5px;
+}
+
+.btn-notify{
+    color: #fff;
+    font-size: 12px;
+    background-color: transparent;
+}
+
+.btn-notify.icon {
+    padding-right: 10px;
+    margin-right: 15px;
+}
+.btn-notify:hover{
+    color: #fff;
+    background-color: #44587a;
+}
+
+#comunidade{
+
+    background-image: url(/img/icons_face.png);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: 0 -699px;
+    height: 24px;
+    width: 24px;
+
+} 
+#mensagem{
+
+    background-image: url(/img/icons_face.png);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: 0 -724px;
+    height: 24px;
+    width: 24px;
+
+} 
+
+
+#notificacao{
+
+    background-image: url(/img/icons_face.png);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: 0 -649px;
+    height: 24px;
+    width: 24px;
+
+} 
+
+
+#ajuda{
+
+    background-image: url(/img/icons_face.png);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: 0 -749px;
+    height: 24px;
+    width: 24px;
+
+}
+#opcao{
+
+    background-image: url(/img/icons_face.png);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: 0 -674px;
+    height: 24px;
+    width: 24px;
+
+}
+
+.divi::after {
+    content: "|";
+    position: absolute;
+    margin-left: 14px;
+    color: #384379;
+}
+
+.icon{
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: -3px;
+
+}
+
+.icon:hover{
+    background-color: unset;
+}
+
+.icons > div {
+    margin-top: -3px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.icons {
+    display: inline-block;
+}
+
+.nameLogo{
+
+    display: none;
+
+}
+
+
+@media(max-width:767px){
+
+    .container.pesquisa {
+        text-align: center;
+    }
+
+    .navbar {
+        position: relative;
+    }
+    .navbar-brand {
+        position: relative;
+        left: 50%;
+        margin-left: -100px !important;  /* 50% of your logo width */
+        display: block;
+    }
+      .navbar-brand>img {
+        display: block;
+        float: left;
+    }
+
+    .nameLogo{
+        font-family: Facebold;
+        font-size: 20px;
+        display: inline-block;
+        padding-top: 10px;
+        padding-left: 5px;
+    }
 }
