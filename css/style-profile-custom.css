@@ -2,6 +2,16 @@ header{
     background-color: #4267b2;
 }
 
+@media(min-width:768px){
+    .container {
+        width: 750px !important;
+    }
+
+    ul.menu.menu-lista {
+        padding-left: 125px;
+    }
+
+}
 
 .navbar{
     background-color: #4267b2;
@@ -181,6 +191,116 @@ button.button-default.btn-pesquisar {
 }
 
 
+.capa{
+    margin-top: -20px;
+    display: block;
+    width: 100%;
+    height: 250px;
+    background-color: rgb(207, 207, 207);
+}
+
+.menu-timeline ul{
+
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid rgb(199, 199, 199);
+}
+
+.menu-timeline ul li a{
+    border-left: 1px solid rgb(219, 219, 219);
+}
+
+.ult a{
+    border-right: 1px solid rgb(219, 219, 219);  
+}
+
+li.menu-lista-timeline {
+    padding: 12px 0px;
+    display: inline-block;
+}
+
+ul.menu.menu-lista {
+    padding: unset;
+    text-align: center;
+}
+
+.menu-lista-timeline a {
+    padding: 12px;
+    font-weight: bold;
+}
+
+
+.profile-img{
+    box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, .07);
+    max-width: 160px;
+    width: 100%;
+    height: 160px;
+    background-color: #29487d;
+    border-radius: 100px;
+    border: 5px solid #fff;
+   
+
+}
+
+.profile-content{
+
+    top: -190px;
+    left: 20px;
+    z-index: 99;
+    position: relative;
+
+
+}
+
+
+.menu-article-content {
+    display: inline-block;
+    position: relative;
+    top: -160px;
+}
+
+
+.apresentacao{
+    height: 500px;
+    border-radius: 3px;
+    background-color: #fff;
+    border: 1px solid rgb(199, 199, 199);
+    padding: 10px 15px 10px 15px;
+}
+
+.publicacao{
+
+    height: 150px;
+    border-radius: 3px;
+    background-color: #fff;
+    border: 1px solid rgb(199, 199, 199);
+    padding: 10px 15px 10px 15px;
+
+}
+
+.col-md-6.app {
+    width: 33%;
+    margin-left: -15px;
+    float: left;
+    padding-right: 0px;
+}
+
+.col-md-6.time-line {
+    width: 65.5%;
+    float: right;
+    margin-right: 15px;
+    padding-left: 0px;
+}
+
+
+@media(max-width:991px){
+    .profile-content{
+        top:-220px;
+    }
+
+}
+
+
 @media(max-width:767px){
 
     .container.pesquisa {
@@ -208,4 +328,19 @@ button.button-default.btn-pesquisar {
         padding-top: 10px;
         padding-left: 5px;
     }
+}
+
+@media(max-width:513px){
+    .menu-timeline ul li a{
+        border-left: unset;
+    }
+    
+    .ult a{
+        border-right: unset;  
+    }
+
+    .profile-content{
+        top:-270px;
+    }
+
 }
