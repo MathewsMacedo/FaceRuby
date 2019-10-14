@@ -13,6 +13,11 @@ header{
 
 }
 
+html{
+    width:100%;
+
+}
+
 .navbar{
     background-color: #4267b2;
     border-bottom: 1px solid #29487d;
@@ -270,7 +275,7 @@ ul.menu.menu-lista {
 
 
 .apresentacao{
-    height: 500px;
+    height: 800px;
     border-radius: 3px;
     background-color: #fff;
     border: 1px solid rgb(199, 199, 199);
@@ -310,6 +315,22 @@ ul.menu.menu-lista {
 
 }
 
+.apresentacao-img{
+    background-image: url(/img/icon-profile.png);
+    background-size: auto;
+    background-position: 50% 9%;
+    background-repeat: no-repeat;
+    display: inline-block;
+    float: left;
+    height: 25px;
+    width: 25px;
+    margin-top: 4px;
+}
+
+.apresentacao h5 {
+    padding-left: 35px !important;
+}
+
 
 
 @media(max-width:767px){
@@ -341,13 +362,12 @@ ul.menu.menu-lista {
     }
 
 
-    .profile-content{
+    .profile-content{sss
         top:-220px;
     }
 
     .row.row-mob {
         width: 100%;
-        position: fixed;
     }
 
 }

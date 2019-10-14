@@ -2,11 +2,12 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="./css/bootstrap.min.css">
-        <script src="./js/jquery.min.js"></script>
-        <script src="./js/bootstrap.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="./css/style-login-custom.css">
-        <link rel="stylesheet" type="text/css" href="./css/font_stylesheet.css">
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/css/style-login-custom.css">
+        <link rel="stylesheet" type="text/css" href="/css/font_stylesheet.css">
+        <script type="text/javascript" src="/js/cadastro.js"></script>
     </head>
     <body>
         <header>
@@ -15,8 +16,8 @@
                     <div class="container justify-content-md-end">
                <div class="navbar-header"> <a class="navbar-brand" href="login.html">faceruby</a></div>
                 <form class="navbar-form navbar-right login">
-                        <input class="form-control mr-sm-2" type="email"  id="email" name="email" placeholder="E-mail" aria-label="email">
-                        <input class="form-control mr-sm-2" type="password"  id="senha" name="senha" placeholder="Senha" aria-label="senha">
+                        <input class="form-control mr-sm-2" type="email"  id="email-login" name="email-login" placeholder="E-mail" aria-label="email-login">
+                        <input class="form-control mr-sm-2" type="password"  id="senha-login" name="senha-login" placeholder="Senha" aria-label="senha-login">
                         <button class="btn btn-thrid my-2 my-sm-0" type="submit">Entrar</button>
                         <div class="form-esqueci"><a class="navbar-form esqueci-senha" href="/login.html">Esqueceu sua senha?</a></div>
                 </form>
@@ -36,7 +37,7 @@
                             <h2>Crie sua conta</h2>
                             <div class="sub-title">É rápido e fácil. 😉</div>
 
-                            <form class="new-user">
+                            <form class="new-user" method="POST" action="login.html">
                                 <div class="container">
                                      <div class="row">
                                         <div class="col-md-3">
@@ -79,9 +80,9 @@
                                             <div class="form-group">
                                                     <label id="genero">Gênero</label><br/>
                             <fieldset id="sexo">
-                                    <input type="radio" id="sexo" value="feminino" name="sexo"> Feminino
-                                    <input type="radio" id="sexo" value="masculino" name="sexo"> Masculino
-                                    <input type="radio" id="sexo" value="personalizado" name="sexo"> Personalizado
+                                    <input type="radio" id="feminino" value="feminino" name="sexo" CHECKED> Feminino
+                                    <input type="radio" id="masculino" value="masculino" name="sexo"> Masculino
+                                    <input type="radio" id="personalizado" value="personalizado" name="sexo"> Personalizado
                                   </fieldset>
                                     </div>
                                 </div>
@@ -91,7 +92,7 @@
                                    Política de Dados e Política de Cookies. Você pode receber notificações por
                                    SMS e pode cancelar isso quando quiser.</small>
                              </div>
-                            <button class="btn btn-success my-2 my-sm-0 btn-cadastrar" type="submit">Cadastre-se</button>
+                            <button class="btn btn-success my-2 my-sm-0 btn-cadastrar" type="submit" onclick="setPostJSON()">Cadastre-se</button>
                         </div>
                             </form>
 
