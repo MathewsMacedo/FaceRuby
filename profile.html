@@ -8,12 +8,13 @@
         <script src="./js/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="./css/style-profile-custom.css">
         <link rel="stylesheet" type="text/css" href="./css/font_stylesheet.css">
+        <script type="text/javascript" src="/js/profile.js"></script>
     </head>
 
     <body>
         <!--Nav Bar-->
         <header>
-            <nav class="navbar navbar-expand navbar-dark bg-info">
+            <nav class="navbar navbar-expand navbar-dark bg-info navbar-fixed-top">
                 <div class="container justify-content-md-end">
                     <div class="navbar-header"> <a class="navbar-brand" href="profile.html"><img src="/img/ruby-logo.png" width="35" height="30" class="d-inline-block align-top" alt="">
                     <div class="nameLogo">faceruby</div>
@@ -51,7 +52,11 @@
         </header>
         <article>
             <div class="container time-line">
-                <div class="capa">        
+                   
+                <div class="capa">
+                        <input id='filecapa' type='file' name='filename' hidden/>
+                        <div class="capa-img" id="capa-img" onclick="uploadCapa()"></div>
+             
                 </div>
                
                 <div class="menu-timeline">
@@ -69,11 +74,26 @@
                 </div>
 
                 <div class="menu-article-content">
-                    <div class="container">
+                    <div class="container article">
                         <div class="row row-mob">
                             <div class="col-md-6 app">
                                 <div class="apresentacao">
                                     <div class="apresentacao-img"></div><h5> Apresentação</h5>
+                                    <div class="biografia">
+                                        <span id="biografia">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+                                        <div class= "btn-apresentacao"><input type="button" class="btn btn-default  btn-app" value="Editar Biografia"/></div>
+                                    </div>
+                                    <div class="detalhes">
+                                        <div class="cidade"><div class="cidade-img"></div><span id="cidade">Mora em Cidade Atual</span></div>
+                                        <div class="cidade-natal"><div class="cidade-natal-img"></div><span id="cidade-natal">De Cidade Natal</span></div>
+                                        <div class="estado-civil"><div class="estado-civil-img"></div><span id="estado-civil">Estado Civil</span></div>
+                                        <div class= "btn-apresentacao"><input type="button" class="btn btn-default btn-app" value="Editar Detalhes"/></div>
+                                    </div>
+                                    <div class="destaque">
+                                            <div class="destaque-img"></div><h5> Fotos Recentes</h5>
+                                            <div class="destaque-algum"></div>
+                                    </div>
+
                                 </div>
                             </div>
                             <div class="col-md-6 time-line">

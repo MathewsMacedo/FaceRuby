@@ -1,6 +1,11 @@
 header{
     background-color: #4267b2;
 }
+@media(min-width:768px){
+    .container.time-line{
+        margin-top: 70px;
+    }
+}
 
 @media(min-width:768px){
     .container {
@@ -14,7 +19,7 @@ header{
 }
 
 html{
-    width:100%;
+    width:100% !important;
 
 }
 
@@ -205,12 +210,16 @@ button.button-default.btn-pesquisar {
 }
 
 
-.capa{
+.capa-img{
     margin-top: -20px;
     display: block;
     width: 100%;
     height: 250px;
+    background-image: URL(/img/foto_capa.jpg);
+    background-position: center;
+    background-size: cover;
     background-color: rgb(207, 207, 207);
+    cursor: pointer;
 }
 
 .menu-timeline ul{
@@ -257,7 +266,7 @@ ul.menu.menu-lista {
 }
 
 .profile-content{
-
+    width: 160px;
     top: -190px;
     left: 20px;
     z-index: 99;
@@ -275,7 +284,7 @@ ul.menu.menu-lista {
 
 
 .apresentacao{
-    height: 800px;
+    height: 550px;
     border-radius: 3px;
     background-color: #fff;
     border: 1px solid rgb(199, 199, 199);
@@ -315,6 +324,17 @@ ul.menu.menu-lista {
 
 }
 
+
+
+.btn-publicar:hover{
+
+    float: right;
+    margin-top: 10px;
+    background-color: #5c7fc5;
+    color:rgb(221, 221, 221);
+
+}
+
 .apresentacao-img{
     background-image: url(/img/icon-profile.png);
     background-size: auto;
@@ -327,8 +347,73 @@ ul.menu.menu-lista {
     margin-top: 4px;
 }
 
+.cidade-img{
+    background-image: url(/img/icon-profile.png);
+    background-size: auto;
+    background-position: 0% 42%;
+    background-repeat: no-repeat;
+    display: inline-block;
+    float: left;
+    height: 16px;
+    width: 20px;
+    margin-top: 0px;
+}
+
+.cidade-natal-img{
+    background-image: url(/img/icon-profile.png);
+    background-size: auto;
+    background-position: 0% 54%;
+    background-repeat: no-repeat;
+    display: inline-block;
+    float: left;
+    height: 16px;
+    width: 20px;
+    margin-top: 0px;
+}
+
+.estado-civil-img{
+    background-image: url(/img/icon-profile.png);
+    background-size: auto;
+    background-position: 0% 36%;
+    background-repeat: no-repeat;
+    display: inline-block;
+    float: left;
+    height: 16px;
+    width: 20px;
+    margin-top: 0px;
+}
+
+
 .apresentacao h5 {
     padding-left: 35px !important;
+}
+
+
+.biografia,.detalhes, .destaque{
+    padding-top: 20px;
+}
+
+.detalhes{
+    font-size: 12px;
+
+}
+
+
+.cidade, .cidade-natal, .estado-civil, .destaque-album{
+    padding-top: 7px
+
+}
+
+.btn-apresentacao {
+    text-align: center;
+    padding-top: 15px;
+    width: 100%;
+}
+
+.btn-app {
+    width: 100%;
+    font-size: 12px;
+    font-weight: bold;
 }
 
 
@@ -362,15 +447,30 @@ ul.menu.menu-lista {
     }
 
 
-    .profile-content{sss
+   
+
+    .profile-content{
         top:-220px;
     }
 
-    .row.row-mob {
+    .container.article {
+        padding-right: 0px;
+    }
+    
+    .menu-article-content {
         width: 100%;
     }
 
+    .col-md-6.time-line{
+
+        padding-right: 0px;
+
+    }
+    
+
 }
+
+
 
 @media(max-width:513px){
     .menu-timeline ul li a{
