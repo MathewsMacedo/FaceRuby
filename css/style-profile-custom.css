@@ -9,7 +9,7 @@ header{
 
 @media(min-width:768px){
     .container {
-        width: 750px !important;
+        width: 850px !important;
     }
 
     ul.menu.menu-lista {
@@ -215,7 +215,7 @@ button.button-default.btn-pesquisar {
     display: block;
     width: 100%;
     height: 250px;
-    background-image: URL(/img/foto_capa.jpg);
+    background-image: URL(/img/capa-rick.jpg);
     background-position: center;
     background-size: cover;
     background-color: rgb(207, 207, 207);
@@ -258,10 +258,13 @@ ul.menu.menu-lista {
     max-width: 160px;
     width: 100%;
     height: 160px;
+    background-position: center;
+    background-size: cover;
+    background-image: URL(/img/rickandmorty.png);
     background-color: #29487d;
     border-radius: 100px;
     border: 5px solid #fff;
-   
+    cursor: pointer;
 
 }
 
@@ -284,11 +287,11 @@ ul.menu.menu-lista {
 
 
 .apresentacao{
-    height: 550px;
+    height: auto;
     border-radius: 3px;
     background-color: #fff;
     border: 1px solid rgb(199, 199, 199);
-    padding: 10px 15px 10px 15px;
+    padding: 10px 10px 10px 10px;
 }
 
 .publicacao{
@@ -298,6 +301,16 @@ ul.menu.menu-lista {
     background-color: #fff;
     border: 1px solid rgb(199, 199, 199);
     padding: 10px 15px 10px 15px;
+
+}
+
+.postagem{
+    height: auto;
+    border-radius: 3px;
+    background-color: #fff;
+    border: 1px solid rgb(199, 199, 199);
+    margin-top: 15px;
+    padding: 10px 15px 23px 15px;
 
 }
 
@@ -339,6 +352,18 @@ ul.menu.menu-lista {
     background-image: url(/img/icon-profile.png);
     background-size: auto;
     background-position: 50% 9%;
+    background-repeat: no-repeat;
+    display: inline-block;
+    float: left;
+    height: 25px;
+    width: 25px;
+    margin-top: 4px;
+}
+
+.destaque-img{
+    background-image: url(/img/icon-profile.png);
+    background-size: auto;
+    background-position: 50% 0%;
     background-repeat: no-repeat;
     display: inline-block;
     float: left;
@@ -416,6 +441,28 @@ ul.menu.menu-lista {
     font-weight: bold;
 }
 
+.img-album{
+    width: 32%; 
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
+    max-height: 80px;
+    height: 100%;
+    border: 1px solid rgb(199, 199, 199);
+
+}
+
+@media(max-width: 745px){
+    .img-album{
+        width: 31%;
+    }
+}
+
+.row-img{
+    padding-top: 10px;
+
+}
+
 
 
 @media(max-width:767px){
@@ -485,16 +532,29 @@ ul.menu.menu-lista {
 
 @media(max-width:507px){
 
-
+    .img-album{
+        width: 32%; 
+        max-height: 100px;
+    }
     .profile-content{
         top:-265px;
     }
     
     .col-md-6.app {
-        display: none !important;
+        width: 100%;
+        margin-bottom: 15px;
     }
 
     .col-md-6.time-line {
-        width: 97%;
+        width: 95%;
     }
+}
+
+
+@media(max-width:305px){
+
+    .profile-content {
+        top: -350px;
+    }
+
 }

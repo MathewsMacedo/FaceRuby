@@ -1,18 +1,21 @@
 
 function uploadCapa(){
-    document.querySelector('#filecapa').click();
-   
- 
+    document.querySelector('#file-capa').click();
 }
 
-window.addEventListener('load', function() {
-    document.querySelector('#filecapa').style.display = 'none';
-    document.querySelector('#filecapa').addEventListener('change', function() {
+function uploadProfile(){
+    document.querySelector('#file-profile').click();
+}
+
+
+function uploadIMG(obj,send){
+    document.querySelector(obj).style.display = 'none';
+    document.querySelector(obj).addEventListener('change', function() {
         if (this.files && this.files[0]) {
-            var file = document.getElementById("filecapa").files[0];
+            var file = document.querySelector(obj).files[0];
             var reader = new FileReader();
             reader.onloadend = function(){
-               document.getElementById('capa-img').style.backgroundImage = "url(" + reader.result + ")";        
+                document.querySelector(send).style.backgroundImage = "url(" + reader.result + ")";        
             }
             if(file){
                reader.readAsDataURL(file);
@@ -20,6 +23,10 @@ window.addEventListener('load', function() {
              }
         }
     });
+}
+
+
+window.addEventListener('load', function() {
+    uploadIMG('#file-capa','#capa-img');
+    uploadIMG('#file-profile','#profile-img');
   });
-  
-  function imageIsLoaded(e) { alert(e); }
