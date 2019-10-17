@@ -9,7 +9,7 @@ header{
 
 @media(min-width:768px){
     .container {
-        width: 850px !important;
+        width: 750px !important;
     }
 
     ul.menu.menu-lista {
@@ -294,6 +294,11 @@ ul.menu.menu-lista {
     padding: 10px 10px 10px 10px;
 }
 
+h5{
+    font-weight: bold;
+
+}
+
 .publicacao{
 
     height: 200px;
@@ -333,7 +338,7 @@ ul.menu.menu-lista {
     float: right;
     margin-top: 10px;
     background-color: #4267b2;
-    color:#fff;
+    color:#fff !important;
 
 }
 
@@ -450,6 +455,35 @@ ul.menu.menu-lista {
     height: 100%;
     border: 1px solid rgb(199, 199, 199);
 
+}
+
+
+.post-img{
+    background-image:url(/img/rickandmorty.png);
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    float: left;
+    background-position: center;
+    background-size: cover;
+
+}
+
+.postagem h5{
+    padding-left: 60px;
+    margin-bottom: 5px;
+
+}
+
+.postagem small {
+    margin-left: 5px;
+}
+
+.conteudo {
+    padding-top: 15px;
+    text-align: justify;
+    white-space: pre-line;
+    height: auto;
 }
 
 @media(max-width: 745px){

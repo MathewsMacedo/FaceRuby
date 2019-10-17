@@ -26,7 +26,33 @@ function uploadIMG(obj,send){
 }
 
 
+function sendPostagem(){
+
+    var texto = document.querySelector('textarea#publicacao'); 
+    if (!texto.value.trim()){
+        return;
+    }
+    var data = new Date().toString();
+    
+    data = data.substring(3,24);
+
+    document.querySelector('.publicacao').insertAdjacentHTML('afterend',"<div class=\"postagem\"> <div class=\"post-img\"></div><h5>Nome da Pessoa</h5><small>"+data+"</small><div class=\"conteudo\"></div></div>");
+    document.querySelector('.conteudo').textContent = texto.value;
+    texto.value = null;
+
+}
+
+
+function publicar(){
+
+    document.querySelector('.btn-publicar').addEventListener('click', function(){ sendPostagem() });
+
+}
+
+
+
 window.addEventListener('load', function() {
     uploadIMG('#file-capa','#capa-img');
     uploadIMG('#file-profile','#profile-img');
+    publicar();
   });
