@@ -8,7 +8,8 @@
         <script src="/js/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="/css/style-login-custom.css">
         <link rel="stylesheet" type="text/css" href="/css/font_stylesheet.css">
-        <script type="text/javascript" src="/js/login.js"></script>
+        <script stype="text/javascript" src="/js/cadastro.js"></script>
+        <script stype="text/javascript" src="/js/login.js"></script>
     </head>
     <body>
         <header>
@@ -17,9 +18,9 @@
                     <div class="container justify-content-md-end">
                <div class="navbar-header"> <a class="navbar-brand" href="/login">faceruby</a></div>
                 <form class="navbar-form navbar-right login">
-                        <input class="form-control mr-sm-2" type="email"  id="email-login" name="email-login" placeholder="E-mail" aria-label="email-login">
-                        <input class="form-control mr-sm-2" type="password"  id="senha-login" name="senha-login" placeholder="Senha" aria-label="senha-login">
-                        <button class="btn btn-thrid my-2 my-sm-0" type="submit">Entrar</button>
+                        <input class="form-control mr-sm-2" type="email"  id="email-login" name="email-login" placeholder="E-mail" aria-label="email-login" required>
+                        <input class="form-control mr-sm-2" type="password"  id="senha-login" name="senha-login" placeholder="Senha" aria-label="senha-login" autocomplete="password" required>
+                        <button class="btn btn-thrid my-2 my-sm-0" id="btn-entrar" type="button">Entrar</button>
                         <div class="form-esqueci"><a class="navbar-form esqueci-senha" href="/login">Esqueceu sua senha?</a></div>
                 </form>
                
@@ -63,7 +64,7 @@
                              <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <input class="form-control" type="password" name="senha" id="senha" placeholder="Senha">
+                                            <input class="form-control" type="password" name="senha" id="senha" placeholder="Senha" autocomplete="password" required>
                                         </div>
                                     </div>
                                 </div>

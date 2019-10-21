@@ -1,23 +1,20 @@
-function getCadastroJSON() {
-
-    var nome = document.querySelector('#nome').value;
-    var sobrenome = document.querySelector('#sobrenome').value;
-    var email = document.querySelector('#email').value;
-    var senha =  document.querySelector('#senha').value;
-    var data_nasc = document.querySelector('#data_nascimento').value;
-    var sexo = document.querySelector('input[name="sexo"]:checked').value;
-
-    var cadastro = {cadastro:{nome: nome,sobrenome:sobrenome,email: email,senha: senha,data_nasc: data_nasc,sexo: sexo}}
-
-    return cadastro;
 
 
+
+function getLoginJSON(){
+  var email = document.querySelector('#email-login').value.toString().toLowerCase();
+  var senha = document.querySelector('#senha-login').value;
+    var logar  = {usuario:{email: email,senha: senha}};
+
+    return logar;
 }
 
-function setPostJSON(){
 
-    var url = '/cadastro_usuario'
-    var json = getCadastroJSON();
+function sendLogin(){
+  var email = document.querySelector('#email-login').value.toString().toLowerCase();
+  var senha = document.querySelector('#senha-login').value;
+    var url = '/login'
+    var json = getLoginJSON();
     console.log(json);
     fetch(url, {
         method: 'POST',
@@ -25,33 +22,38 @@ function setPostJSON(){
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(json)
-      });
-
-
-
-
-
-}
-
-
-
-function cadastroUsuario(){
-
-  setPostJSON();
-}
-
-
-function cadastro(){
-   
-    document.querySelector('#btn-cadastro').addEventListener('click',function(){ alert('ola'); cadastroUsuario()});
-
+      }).then(function (response) {
+        if(response.status == 200){
+          window.location.href= '/profile';
+          localStorage.setItem("email", email);
+          localStorage.setItem("senha", senha);
+        }else if(response.status == 401){
+          alert('E-mail ou senha incorreto!\nAcesso negado! Erro:401');
+        }else{
+            window.location.href= '/500';
+        }
+    });
 
 }
 
 
 
-window.addEventListener('load', function() {
+function userlogin(){
+    sendLogin();
+}
 
-  cadastro();
+
+
+
+function entrar(){
+    document.querySelector('#btn-entrar').addEventListener('click', function(){ userlogin() })
+
+}
+
+window.addEventListener('load', function(){
+
+entrar();
 
 });
+
+

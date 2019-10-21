@@ -3,5 +3,6 @@ Rails.application.routes.draw do
 
   resources :cadastro_usuario
   resources :login
+  resources :ver_sessao
   root :to => redirect("login")
 end

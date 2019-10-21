@@ -2,9 +2,9 @@ class CadastroUsuarioController < ApplicationController
 
     def create 
         @usuario = Usuario.new usuario_params
-        if @usuario
+        if @usuario.save
             respond_to do |format|
-                format.js{ redirect_to '/profile.html' , turbolinks: false}
+                format.json { head 201 }
             end
         end
     end
@@ -12,7 +12,7 @@ class CadastroUsuarioController < ApplicationController
     private
 
     def usuario_params   
-        params.permit(:nome,:sobrenome,:email,:senha,:data_nasc,:sexo)
+        params.require(:usuario).permit(:nome,:sobrenome,:email,:senha,:data_nasc,:sexo)
     end
 
     def set_usuario

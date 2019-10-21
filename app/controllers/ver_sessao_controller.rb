@@ -1,0 +1,4 @@
+class VerSessaoController < ApplicationController
+
+
+end
