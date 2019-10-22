@@ -486,6 +486,12 @@ h5{
     height: auto;
 }
 
+input#file-profile, input#file-capa{
+
+    display: none !important;
+
+}
+
 @media(max-width: 745px){
     .img-album{
         width: 31%;

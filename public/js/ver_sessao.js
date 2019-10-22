@@ -20,6 +20,10 @@ function sendVerSessao(){
         body: JSON.stringify(json)
       }).then(function (response) {
         if(response.status == 200){
+          if(window.location.pathname.toString() == '/login'){
+            window.location.href= '/profile';
+
+          }
          
         }else{
 

@@ -138,6 +138,21 @@ a.navbar-form.esqueci-senha {
   padding: 0 0 30px 10px;
 }
 
+
+/* ajuste espaço em branco */
+.container.newuser {
+  width: 100% !important;
+}
+
+.col-md-3 {
+  width: 50% !important;
+}
+
+.col-sm-6 {
+  width: 100% !important;
+}
+
+
 @media(max-width:767px){
 
     .navbar-form{
@@ -175,5 +190,23 @@ a.navbar-form.esqueci-senha {
   input[type=checkbox], input[type=radio] {
     margin: 0px 1px 0px;
   }
+
+
+}
+
+@media(max-width:991px){
+
+ /* ajuste espaço em branco */
+ .container.newuser {
+  width: 100% !important;
+}
+
+.col-md-3 {
+  width: 100% !important;
+}
+
+.col-sm-6 {
+  width: 100% !important;
+}
 
 }

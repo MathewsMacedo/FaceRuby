@@ -14,8 +14,7 @@ function sendLogin(){
   var email = document.querySelector('#email-login').value.toString().toLowerCase();
   var senha = document.querySelector('#senha-login').value;
     var url = '/login'
-    var json = getLoginJSON();
-    console.log(json);
+    var json = getLoginJSON();    
     fetch(url, {
         method: 'POST',
         headers: {
@@ -30,6 +29,7 @@ function sendLogin(){
         }else if(response.status == 401){
           alert('E-mail ou senha incorreto!\nAcesso negado! Erro:401');
         }else{
+          
             window.location.href= '/500';
         }
     });

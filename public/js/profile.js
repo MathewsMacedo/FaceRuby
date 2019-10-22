@@ -1,21 +1,27 @@
+var img_base64;
 
-function uploadCapa(){
-    document.querySelector('#file-capa').click();
-}
-
-function uploadProfile(){
-    document.querySelector('#file-profile').click();
+function getIMGJSON(send){
+    const email = localStorage.getItem('email');
+    const senha = localStorage.getItem('senha');
+    var json;
+    if(send == '#capa-img'){
+     json = {usuario:{email: email,senha: senha,img_capa: img_base64.toString(),img_profile: null}};
+    }else{
+        json = {usuario:{email: email,senha: senha,img_capa: null,img_profile: img_base64.toString()}};
+    }
+    return json;
 }
 
 
 function uploadIMG(obj,send){
-    document.querySelector(obj).style.display = 'none';
     document.querySelector(obj).addEventListener('change', function() {
         if (this.files && this.files[0]) {
             var file = document.querySelector(obj).files[0];
             var reader = new FileReader();
             reader.onloadend = function(){
-                document.querySelector(send).style.backgroundImage = "url(" + reader.result + ")";        
+                document.querySelector(send).style.backgroundImage = "url(" + reader.result + ")";  
+                img_base64 = reader.result;
+                sendIMG(send);
             }
             if(file){
                reader.readAsDataURL(file);
@@ -57,11 +63,38 @@ function updateBiografia(){
         document.querySelector('.biografia').innerHTML = " <textarea class=\"form-control\" id=\"biografia\" name=\"biografia\" style=\"resize: none\" rows=\"4\" maxlength=\"220\">" + 
         bio + "</textarea> <div class= \"btn-apresentacao\"><input type=\"button\" id=\"btn-biografia-update\" class=\"btn btn-success  btn-app\" value=\"Confirmar\"></div>";
         document.querySelector('textarea#biografia').focus();
-        document.querySelector('#btn-biografia-update').addEventListener('click',function(){ sendBiografia()});
-        
+        document.querySelector('#btn-biografia-update').addEventListener('click',function(){ sendBiografia()});        
     }
+}
 
 
+function sendIMG(send){
+      var url = '/upload_img'
+      var json = getIMGJSON(send);  
+      console.log(json);  
+      fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(json)
+        }).then(function (response) {
+          if(response.status == 200){
+            alert('Success');
+          }else if(response.status == 401){
+            alert('Falha na alteração');
+          }else{
+            
+             // window.location.href= '/500';
+          }
+      });
+  
+  }
+
+function logoff(){
+
+    localStorage.removeItem('email');
+    localStorage.removeItem('senha');
 }
 
 
@@ -75,9 +108,26 @@ function biografia(){
 }
 
 
+function sair(){
+
+    document.querySelector('#sair').addEventListener('click', function(){ logoff() });
+}
+
+
+function uploadCapa(){
+    document.querySelector('#file-capa').click();
+}
+
+function uploadProfile(){
+    document.querySelector('#file-profile').click();
+}
+
+
+/*CARREGAR FUNÇÕES*/
 window.addEventListener('load', function() {
     uploadIMG('#file-capa','#capa-img');
     uploadIMG('#file-profile','#profile-img');
     publicar();
     biografia();
+    sair();
   });
