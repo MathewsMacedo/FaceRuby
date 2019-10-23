@@ -12,6 +12,15 @@ function getIMGJSON(send){
     return json;
 }
 
+function getBiografiaJSON(){
+    const email = localStorage.getItem('email');
+    const senha = localStorage.getItem('senha');
+    const id = localStorage.getItem('id');
+    const biografia = document.querySelector('#biografia').value;
+    const json = {usuario:{id: id,email: email,senha: senha,biografia: biografia}}
+    return json;
+}
+
 
 function uploadIMG(obj,send){
     document.querySelector(obj).addEventListener('change', function() {
@@ -49,7 +58,7 @@ function sendPostagem(){
 
 }
 
-function sendBiografia() {
+function fixedBiografia() {
     var new_bio = document.querySelector('textarea#biografia').value;
     document.querySelector('.biografia').innerHTML = "<span id=\"biografia\">" +
      new_bio + "</span> <div class= \"btn-apresentacao\"><input type=\"button\" id=\"btn-biografia\" class=\"btn btn-default  btn-app\" value=\"Editar Biografia\"/></div>";
@@ -65,7 +74,7 @@ function updateBiografia(){
          "</textarea> <div class= \"btn-apresentacao\"><input type=\"button\" id=\"btn-biografia-update\" class=\"btn btn-success  btn-app\" value=\"Confirmar\"></div>";
         document.querySelector('textarea#biografia').focus();
         document.querySelector('textarea#biografia').value = bio;
-        document.querySelector('#btn-biografia-update').addEventListener('click',function(){ sendBiografia()});        
+        document.querySelector('#btn-biografia-update').addEventListener('click',function(){ sendBiografia(); fixedBiografia();});        
     }
 }
 
@@ -105,6 +114,31 @@ function updateBiografia(){
 }
 
 
+    function sendBiografia(){
+        var url = '/biografia_post'
+        var json = getBiografiaJSON();  
+        console.log(json);  
+        fetch(url, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(json)
+          }).then(function (response) {
+            if(response.status == 200){
+              alert('Success');
+            }else if(response.status == 401){
+              alert('Falha na alteração');
+            }else{
+              
+               // window.location.href= '/500';
+            }
+        });
+    
+    }
+
+
+
 
 
 function logoff(){
@@ -141,6 +175,7 @@ function uploadProfile(){
 function loadProfile(user){
     document.querySelector('#capa-img').style.backgroundImage = "url(" + user.img_capa.toString() + ")"; 
     document.querySelector('#profile-img').style.backgroundImage = "url(" + user.img_profile.toString() + ")"; 
+    document.querySelector('#biografia').textContent = user.biografia.toString();
     myElement = document.querySelectorAll('.post-img');
     for(let i = 0; i < myElement.length; i++){
         myElement[i].style.backgroundImage = "url(" + user.img_profile.toString() + ")"; 
