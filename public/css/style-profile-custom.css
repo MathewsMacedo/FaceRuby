@@ -215,7 +215,6 @@ button.button-default.btn-pesquisar {
     display: block;
     width: 100%;
     height: 250px;
-    background-image: URL(/img/capa-rick.jpg);
     background-position: center;
     background-size: cover;
     background-color: rgb(207, 207, 207);
@@ -260,7 +259,6 @@ ul.menu.menu-lista {
     height: 160px;
     background-position: center;
     background-size: cover;
-    background-image: URL(/img/rickandmorty.png);
     background-color: #29487d;
     border-radius: 100px;
     border: 5px solid #fff;
@@ -423,6 +421,10 @@ h5{
     padding-top: 20px;
 }
 
+span#biografia {
+    overflow-wrap: break-word;
+}
+
 .detalhes{
     font-size: 12px;
 
@@ -459,7 +461,6 @@ h5{
 
 
 .post-img{
-    background-image:url(/img/rickandmorty.png);
     width: 50px;
     height: 50px;
     border-radius: 100px;

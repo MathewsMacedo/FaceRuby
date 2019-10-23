@@ -2,7 +2,8 @@
 function getSessaoJSON(){
     const email = localStorage.getItem("email");
     const senha = localStorage.getItem("senha");
-    const usuario = {usuario:{email: email,senha: senha}}
+    const id = localStorage.getItem("id");
+    const usuario = {usuario:{id: id,email: email,senha: senha}}
 
     return usuario;
 }
@@ -33,6 +34,8 @@ function sendVerSessao(){
           }
               
         }
+
+        
     });
 }
 

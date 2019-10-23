@@ -1,5 +1,5 @@
 var img_base64;
-
+var user;
 function getIMGJSON(send){
     const email = localStorage.getItem('email');
     const senha = localStorage.getItem('senha');
@@ -44,6 +44,7 @@ function sendPostagem(){
 
     document.querySelector('.publicacao').insertAdjacentHTML('afterend',"<div class=\"postagem\"> <div class=\"post-img\"></div><h5>Nome da Pessoa</h5><small>"+data+"</small><div class=\"conteudo\"></div></div>");
     document.querySelector('.conteudo').textContent = texto.value;
+    document.querySelector('.post-img').style.backgroundImage = "url(" + user.img_profile.toString() + ")"; 
     texto.value = null;
 
 }
@@ -61,40 +62,54 @@ function updateBiografia(){
     if(document.querySelector('span#biografia')){
         var bio = document.querySelector('span#biografia').textContent;
         document.querySelector('.biografia').innerHTML = " <textarea class=\"form-control\" id=\"biografia\" name=\"biografia\" style=\"resize: none\" rows=\"4\" maxlength=\"220\">" + 
-        bio + "</textarea> <div class= \"btn-apresentacao\"><input type=\"button\" id=\"btn-biografia-update\" class=\"btn btn-success  btn-app\" value=\"Confirmar\"></div>";
+         "</textarea> <div class= \"btn-apresentacao\"><input type=\"button\" id=\"btn-biografia-update\" class=\"btn btn-success  btn-app\" value=\"Confirmar\"></div>";
         document.querySelector('textarea#biografia').focus();
+        document.querySelector('textarea#biografia').value = bio;
         document.querySelector('#btn-biografia-update').addEventListener('click',function(){ sendBiografia()});        
     }
 }
 
+    
+    fetch('/userdata/'+localStorage.getItem('id'))
+    .then(res => res.json())
+    .then(function(json){
+        var usuario = JSON.parse(JSON.stringify(json));
+        user =  usuario;
+        loadProfile(usuario);
+    });
 
-function sendIMG(send){
-      var url = '/upload_img'
-      var json = getIMGJSON(send);  
-      console.log(json);  
-      fetch(url, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(json)
-        }).then(function (response) {
-          if(response.status == 200){
-            alert('Success');
-          }else if(response.status == 401){
-            alert('Falha na alteração');
-          }else{
-            
-             // window.location.href= '/500';
-          }
-      });
-  
-  }
+
+
+
+  function sendIMG(send){
+    var url = '/upload_img'
+    var json = getIMGJSON(send);  
+    console.log(json);  
+    fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(json)
+      }).then(function (response) {
+        if(response.status == 200){
+          alert('Success');
+        }else if(response.status == 401){
+          alert('Falha na alteração');
+        }else{
+          
+           // window.location.href= '/500';
+        }
+    });
+
+}
+
+
+
 
 function logoff(){
 
-    localStorage.removeItem('email');
-    localStorage.removeItem('senha');
+    localStorage.clear();
 }
 
 
@@ -121,6 +136,17 @@ function uploadCapa(){
 function uploadProfile(){
     document.querySelector('#file-profile').click();
 }
+
+
+function loadProfile(user){
+    document.querySelector('#capa-img').style.backgroundImage = "url(" + user.img_capa.toString() + ")"; 
+    document.querySelector('#profile-img').style.backgroundImage = "url(" + user.img_profile.toString() + ")"; 
+    myElement = document.querySelectorAll('.post-img');
+    for(let i = 0; i < myElement.length; i++){
+        myElement[i].style.backgroundImage = "url(" + user.img_profile.toString() + ")"; 
+    }
+}
+
 
 
 /*CARREGAR FUNÇÕES*/

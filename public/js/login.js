@@ -21,18 +21,26 @@ function sendLogin(){
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(json)
-      }).then(function (response) {
-        if(response.status == 200){
-          window.location.href= '/profile';
-          localStorage.setItem("email", email);
-          localStorage.setItem("senha", senha);
-        }else if(response.status == 401){
-          alert('E-mail ou senha incorreto!\nAcesso negado! Erro:401');
-        }else{
-          
-            window.location.href= '/500';
-        }
-    });
+      }).then(res => res.json())
+      .then(function(json){
+          var notice = JSON.parse(JSON.stringify(json));
+          validarStatus(notice);
+      });
+
+}
+
+
+
+
+function validarStatus(notice){
+    if (notice.message == 'Unauthorized'){
+      alert('Email ou senha invalido');
+    }else{
+      localStorage.setItem('id',notice[0].id);
+      localStorage.setItem('email',notice[0].email);
+      localStorage.setItem('senha',notice[0].senha);
+      window.location.href = '/profile';
+    }
 
 }
 

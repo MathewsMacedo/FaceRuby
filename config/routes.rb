@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   post '/cadastro_usuario', to: 'cadastro_usuario#create'
   post '/login', to: 'login#create'
+  get '/userdata/:id', to: 'profile#show', as: 'userdata'
   post '/upload_img', to: 'upload_img#create'
   root :to => redirect("login")
 end
