@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_18_201324) do
+ActiveRecord::Schema.define(version: 2019_10_24_192714) do
+
+  create_table "conteudos", force: :cascade do |t|
+    t.integer "id_usuario"
+    t.text "texto"
+    t.string "media"
+    t.string "local"
+    t.string "sentimento"
+    t.string "background"
+    t.integer "visibilidade"
+    t.integer "id_share"
+    t.integer "status"
+    t.string "ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "usuarios", force: :cascade do |t|
     t.string "nome"

@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id_usuario: 1
+  texto: MyText
+  media: MyString
+  local: MyString
+  sentimento: MyString
+  background: MyString
+  visibilidade: 1
+  id_share: 1
+  status: 1
+  ip: MyString
+
+two:
+  id_usuario: 1
+  texto: MyText
+  media: MyString
+  local: MyString
+  sentimento: MyString
+  background: MyString
+  visibilidade: 1
+  id_share: 1
+  status: 1
+  ip: MyString
