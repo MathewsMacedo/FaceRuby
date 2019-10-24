@@ -430,13 +430,20 @@ span#biografia {
 
 }
 
+.detalhes .form-group {
+    margin-top: -4px;
+    margin-bottom: 2px;
+    max-width: 190px;
+    width: 100%;
+}
+
 
 .cidade, .cidade-natal, .estado-civil, .destaque-album{
     padding-top: 7px
 
 }
 
-.btn-apresentacao {
+.btn-apresentacao, .btn-detalhes {
     text-align: center;
     padding-top: 15px;
     width: 100%;
@@ -485,6 +492,7 @@ span#biografia {
     text-align: justify;
     white-space: pre-line;
     height: auto;
+    word-break: break-word;
 }
 
 input#file-profile, input#file-capa{
