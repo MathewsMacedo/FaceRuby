@@ -46,6 +46,17 @@ function getDetalhesJSON(){
 
 }
 
+function getConteudoJSON(){
+    const id_usuario = localStorage.getItem('id');
+    const email = localStorage.getItem('email');
+    const senha = localStorage.getItem('senha');
+    const texto = document.querySelector('textarea#publicacao').value;
+
+    const json = {conteudo:{id_usuario: id_usuario, texto: texto}, usuario:{id: id_usuario,email: email,senha: senha}}
+    
+    return json;
+}
+
 
 function uploadIMG(obj,send){
     document.querySelector(obj).addEventListener('change', function() {
@@ -68,17 +79,23 @@ function uploadIMG(obj,send){
 
 function sendPostagem(){
 
-    var texto = document.querySelector('textarea#publicacao'); 
+    const texto = document.querySelector('textarea#publicacao'); 
     if (!texto.value.trim()){
         return;
     }
-    var data = new Date().toString();
     
+    var data = new Date().toString();
+    const url = '/conteudo_post'
+    const json = getConteudoJSON();
+
+    set_POST(url,json);
+
     data = data.substring(3,24);
 
     document.querySelector('.publicacao').insertAdjacentHTML('afterend',"<div class=\"postagem\"> <div class=\"post-img\"></div><h5>Nome da Pessoa</h5><small>"+data+"</small><div class=\"conteudo\"></div></div>");
     document.querySelector('.conteudo').textContent = texto.value;
     document.querySelector('.post-img').style.backgroundImage = "url(" + user.img_profile.toString() + ")"; 
+
     texto.value = null;
 
 }
@@ -200,8 +217,10 @@ function logoff(){
 
 
 function publicar(){
-    document.querySelector('.btn-publicar').addEventListener('click', function(){ sendPostagem() });
+    document.querySelector('.btn-publicar').addEventListener('click', function(){ sendPostagem(); });
 }
+
+
 
 
 function biografia(){

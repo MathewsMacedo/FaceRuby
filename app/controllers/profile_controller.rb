@@ -20,6 +20,42 @@ class ProfileController < ApplicationController
     end
 
 
+    def getConteudo
+        usuario = Usuario.where("id = ?", params[:id]) 
+        user  = usuario[0]
+        conteudos = Conteudo.where("id_usuario = ?",user.id)
+        json = ""
+        conteudos.each do |content|
+            json << "{conteudo: {"
+            json << "nome:"
+            json << user.nome << " " << user.sobrenome
+            json << ","
+            json << "texto:"
+            json << content.texto
+            json << "}"
+            json << ","
+        end      
+       
+        json << "}"
+
+        render :json =>  json
+    end
+
+    def conteudo_create
+        usuario = findUser
+        if !usuario.blank?  
+            conteudo = Conteudo.new conteudo_params
+            if conteudo.save
+                respond_to do |format|
+                    format.json { head 200 }
+                end
+            end
+        else
+            verificar usuario
+        end
+    end
+
+
     def verificar(usuario)
         if usuario
             respond_to do |format|
@@ -35,6 +71,7 @@ class ProfileController < ApplicationController
 
     private
 
+
     def usuario_params
         params.require(:usuario).permit(:id,:email,:senha)
     end
@@ -45,6 +82,10 @@ class ProfileController < ApplicationController
 
     def detalhes_params
         params.require(:usuario).permit(:id,:email,:senha,:cidade_atual,:cidade_natal,:estado_civil)
+    end
+
+    def conteudo_params
+        params.require(:conteudo).permit(:id_usuario,:texto)
     end
 
     def findUser
