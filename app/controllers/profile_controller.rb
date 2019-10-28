@@ -20,25 +20,25 @@ class ProfileController < ApplicationController
     end
 
 
+    class Postagem
+        attr_accessor :nome, :texto, :data
+         def initialize(nome, texto, data)
+             self.nome = nome
+             self.texto = texto 
+             self.data = data
+         end
+     end
+
     def getConteudo
         usuario = Usuario.where("id = ?", params[:id]) 
         user  = usuario[0]
         conteudos = Conteudo.where("id_usuario = ?",user.id)
-        json = ""
-        conteudos.each do |content|
-            json << "{conteudo: {"
-            json << "nome:"
-            json << user.nome << " " << user.sobrenome
-            json << ","
-            json << "texto:"
-            json << content.texto
-            json << "}"
-            json << ","
-        end      
-       
-        json << "}"
-
-        render :json =>  json
+        post = []
+        conteudos.each do |content|         
+          conteudo  = Postagem.new(user.nome,content.texto,content.texto)
+          post << conteudo
+        end   
+        render :json =>  post
     end
 
     def conteudo_create

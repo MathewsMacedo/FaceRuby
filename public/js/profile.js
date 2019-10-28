@@ -1,12 +1,21 @@
 var img_base64;
 var user;
+var conteudo;
 
 fetch('/userdata/'+localStorage.getItem('id'))
 .then(res => res.json())
 .then(function(json){
     var usuario = JSON.parse(JSON.stringify(json));
     user =  usuario;
-    loadProfile(usuario);
+    loadProfile(usuario,conteudo);
+});
+
+fetch('/getConteudo/'+localStorage.getItem('id'))
+.then(res => res.json())
+.then(function(json){
+    var content = JSON.parse(JSON.stringify(json));
+    conteudo =  content;
+    loadProfile(user,content);
 });
 
 
@@ -245,8 +254,20 @@ function uploadProfile(){
     document.querySelector('#file-profile').click();
 }
 
+function verificarProfile(user,conteudo){
+    if(!user){
+        if(!conteudo){
 
-function loadProfile(user){
+            return
+        }
+    
+    }
+
+
+}
+
+function loadProfile(user,conteudo){
+    if(user){
     document.querySelector('#capa-img').style.backgroundImage = "url(" + user.img_capa + ")"; 
     document.querySelector('#profile-img').style.backgroundImage = "url(" + user.img_profile + ")"; 
     document.querySelector('#biografia').textContent = user.biografia;
@@ -258,10 +279,23 @@ function loadProfile(user){
 
     document.querySelector('span#estado-civil').textContent = user.estado_civil;
     
+    if(conteudo){
+        const count = conteudo.length;
+        const nome = conteudo[0].nome;
+        for(let i = 0; i < count;i++){
+            document.querySelector('.publicacao').insertAdjacentHTML('afterend',"<div class=\"postagem\"> <div class=\"post-img\"></div><h5>"+nome+"</h5><small>"+"</small><div class=\"conteudo\"></div></div>");
+            document.querySelector('.conteudo').textContent = conteudo[i].texto;
+    
+        }
+
+    }
+           
+
     myElement = document.querySelectorAll('.post-img');
     for(let i = 0; i < myElement.length; i++){
         myElement[i].style.backgroundImage = "url(" + user.img_profile.toString() + ")"; 
     }
+}
 }
 
 
