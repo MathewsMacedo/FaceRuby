@@ -282,8 +282,11 @@ function loadProfile(user,conteudo){
     if(conteudo){
         const count = conteudo.length;
         const nome = conteudo[0].nome;
+        
         for(let i = 0; i < count;i++){
-            document.querySelector('.publicacao').insertAdjacentHTML('afterend',"<div class=\"postagem\"> <div class=\"post-img\"></div><h5>"+nome+"</h5><small>"+"</small><div class=\"conteudo\"></div></div>");
+            const data = new Date(conteudo[i].data).toString().substring(3,24);
+        
+            document.querySelector('.publicacao').insertAdjacentHTML('afterend',"<div class=\"postagem\"> <div class=\"post-img\"></div><h5>"+nome+"</h5><small>"+data+"</small><div class=\"conteudo\"></div></div>");
             document.querySelector('.conteudo').textContent = conteudo[i].texto;
     
         }

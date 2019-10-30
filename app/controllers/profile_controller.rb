@@ -34,8 +34,10 @@ class ProfileController < ApplicationController
         user  = usuario[0]
         conteudos = Conteudo.where("id_usuario = ?",user.id)
         post = []
-        conteudos.each do |content|         
-          conteudo  = Postagem.new(user.nome,content.texto,content.texto)
+        conteudos.each do |content|   
+            nome = "" 
+            nome <<   user.nome << " " << user.sobrenome   
+          conteudo  = Postagem.new(nome,content.texto,content.created_at)
           post << conteudo
         end   
         render :json =>  post
