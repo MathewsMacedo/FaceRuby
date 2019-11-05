@@ -2,6 +2,8 @@ var img_base64;
 var user;
 var conteudo;
 
+var opcaoPost = "<ul class=\"nav nav-pills post_opcao\">\n  <li class=\"dropdown\">\n    <a class=\"dropdown-toggle\"\n       data-toggle=\"dropdown\"\n       href=\"#\">...</a>\n    <ul class=\"dropdown-menu\">\n      <!-- links -->\n <li><a href=\"#\">Editar</a></li> <li><a href=\"#\">Excluir</a></li>   </ul>\n  </li>\n</ul>";
+
 fetch('/userdata/'+localStorage.getItem('id'))
 .then(res => res.json())
 .then(function(json){
@@ -101,7 +103,7 @@ function sendPostagem(){
 
     data = data.substring(3,24);
 
-    document.querySelector('.publicacao').insertAdjacentHTML('afterend',"<div class=\"postagem\"> <div class=\"post-img\"></div><h5>Nome da Pessoa</h5><small>"+data+"</small><div class=\"conteudo\"></div></div>");
+    document.querySelector('.publicacao').insertAdjacentHTML('afterend',"<div class=\"postagem\"> "+opcaoPost+"<div class=\"post-img\"></div><h5>"+user.nome+" "+user.sobrenome+"</h5><small>"+data+"</small><div class=\"conteudo\"></div></div>");
     document.querySelector('.conteudo').textContent = texto.value;
     document.querySelector('.post-img').style.backgroundImage = "url(" + user.img_profile.toString() + ")"; 
 
@@ -213,7 +215,7 @@ function set_POST(url,json){
           alert('Falha na alteração');
         }else{
           
-           // window.location.href= '/500';
+            window.location.href= '/500';
         }
     });
 
@@ -286,7 +288,7 @@ function loadProfile(user,conteudo){
         for(let i = 0; i < count;i++){
             const data = new Date(conteudo[i].data).toString().substring(3,24);
         
-            document.querySelector('.publicacao').insertAdjacentHTML('afterend',"<div class=\"postagem\"> <div class=\"post-img\"></div><h5>"+nome+"</h5><small>"+data+"</small><div class=\"conteudo\"></div></div>");
+            document.querySelector('.publicacao').insertAdjacentHTML('afterend',"<div class=\"postagem\">"+opcaoPost+"<div class=\"post-img\"></div><h5>"+nome+"</h5><small>"+data+"</small><div class=\"conteudo\"></div></div>");
             document.querySelector('.conteudo').textContent = conteudo[i].texto;
     
         }
