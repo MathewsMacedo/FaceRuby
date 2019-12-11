@@ -1,5 +1,15 @@
 class ProfileController < ApplicationController
 
+    class Postagem
+        attr_accessor :nome, :texto, :data, :id_conteudo
+         def initialize(id_conteudo, nome, texto, data)
+             self.id_conteudo = id_conteudo
+             self.nome = nome
+             self.texto = texto 
+             self.data = data
+         end
+     end
+
 
     
     def show 
@@ -20,14 +30,7 @@ class ProfileController < ApplicationController
     end
 
 
-    class Postagem
-        attr_accessor :nome, :texto, :data
-         def initialize(nome, texto, data)
-             self.nome = nome
-             self.texto = texto 
-             self.data = data
-         end
-     end
+  
 
     def getConteudo
         usuario = Usuario.where("id = ?", params[:id]) 
@@ -37,7 +40,7 @@ class ProfileController < ApplicationController
         conteudos.each do |content|   
             nome = "" 
             nome <<   user.nome << " " << user.sobrenome   
-          conteudo  = Postagem.new(nome,content.texto,content.created_at)
+          conteudo  = Postagem.new(content.id,nome,content.texto,content.created_at)
           post << conteudo
         end   
         render :json =>  post

@@ -17,6 +17,7 @@ fetch('/getConteudo/'+localStorage.getItem('id'))
 .then(function(json){
     var content = JSON.parse(JSON.stringify(json));
     conteudo =  content;
+    console.log(conteudo)
     loadProfile(user,content);
 });
 
@@ -287,21 +288,26 @@ function loadProfile(user,conteudo){
         
         for(let i = 0; i < count;i++){
             const data = new Date(conteudo[i].data).toString().substring(3,24);
-        
-            document.querySelector('.publicacao').insertAdjacentHTML('afterend',"<div class=\"postagem\">"+opcaoPost+"<div class=\"post-img\"></div><h5>"+nome+"</h5><small>"+data+"</small><div class=\"conteudo\"></div></div>");
+            var opcaoPost1 = "<ul class=\"nav nav-pills post_opcao\">\n  <li class=\"dropdown\">\n    <a class=\"dropdown-toggle\"\n       data-toggle=\"dropdown\"\n       href=\"#\">...</a>\n    <ul class=\"dropdown-menu\">\n      <!-- links -->\n <li><a class=\"editar-conteudo conteudo-ajuste\" data-id_conteudo=\""+conteudo[i].id_conteudo+"\">Editar</a></li> <li><a class=\"excluir-conteudo conteudo-ajuste\" data-id_conteudo=\""+conteudo[i].id_conteudo+"\">Excluir</a></li>   </ul>\n  </li>\n</ul>";    
+            document.querySelector('.publicacao').insertAdjacentHTML('afterend',"<div class=\"postagem\" data-id_conteudo=\""+conteudo[i].id_conteudo+"\">"+opcaoPost1+"<div class=\"post-img\"></div><h5>"+nome+"</h5><small>"+data+"</small><div class=\"conteudo\"></div></div>");
             document.querySelector('.conteudo').textContent = conteudo[i].texto;
-    
+            document.querySelector("a[data-id_conteudo=\""+conteudo[i].id_conteudo+"\"].editar-conteudo").addEventListener('click', function(){console.log(conteudo[i].id_conteudo + " - Editar")});
+            document.querySelector("a[data-id_conteudo=\""+conteudo[i].id_conteudo+"\"].excluir-conteudo").addEventListener('click', function(){console.log(conteudo[i].id_conteudo + " - Excluir")});
+       
         }
 
     }
            
-
-    myElement = document.querySelectorAll('.post-img');
-    for(let i = 0; i < myElement.length; i++){
-        myElement[i].style.backgroundImage = "url(" + user.img_profile.toString() + ")"; 
+         if(user.img_profile!=null){
+             myElement = document.querySelectorAll('.post-img');
+            for(let i = 0; i < myElement.length; i++){
+                 myElement[i].style.backgroundImage = "url(" + user.img_profile.toString() + ")"; 
+             }
+        }
     }
 }
-}
+
+
 
 
 

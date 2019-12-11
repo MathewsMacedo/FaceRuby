@@ -71,6 +71,11 @@ body{
     border-radius: 4px !important;
 }
 
+
+.conteudo-ajuste {
+    cursor: pointer;
+}
+
 button.button-default.btn-pesquisar {
     margin-left: -8px;
     border-radius: 4px;
