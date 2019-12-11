@@ -104,13 +104,34 @@ function sendPostagem(){
 
     data = data.substring(3,24);
 
-    document.querySelector('.publicacao').insertAdjacentHTML('afterend',"<div class=\"postagem\"> "+opcaoPost+"<div class=\"post-img\"></div><h5>"+user.nome+" "+user.sobrenome+"</h5><small>"+data+"</small><div class=\"conteudo\"></div></div>");
+    document.querySelector('.all-publicacao').insertAdjacentHTML('afterbegin',"<div class=\"postagem\"> "+opcaoPost+"<div class=\"post-img\"></div><h5>"+user.nome+" "+user.sobrenome+"</h5><small>"+data+"</small><div class=\"conteudo\"></div></div>");
     document.querySelector('.conteudo').textContent = texto.value;
     document.querySelector('.post-img').style.backgroundImage = "url(" + user.img_profile.toString() + ")"; 
 
     texto.value = null;
 
 }
+
+function updatePostagem(id_conteudo){
+
+    postagem = document.querySelector(".conteudo[data-id_conteudo=\""+id_conteudo+"\"]");
+
+    const texto = postagem.textContent;
+
+    postagem.innerHTML = "<textarea class=\"form-control\" id=\"editar_publicacao_"+id_conteudo+"\" name=\"editar_publicacao\" style=\"resize: none\" rows=\"4\"></textarea>";
+    campo_post = document.querySelector("#editar_publicacao_"+id_conteudo)
+    campo_post.textContent = texto;
+    campo_post.insertAdjacentHTML('afterend',`<button type="button" class="btn btn-editar-publicacao btn-success">Editar</button>`);
+
+}
+
+function sendBiografia(){
+        var url = '/biografia_post'
+        var json = getBiografiaJSON();  
+        
+        set_POST(url,json);
+    
+    }
 
 function fixedBiografia() {
     var new_bio = document.querySelector('textarea#biografia').value;
@@ -131,13 +152,7 @@ function updateBiografia(){
     }
 }
     
-function sendBiografia(){
-        var url = '/biografia_post'
-        var json = getBiografiaJSON();  
-        
-        set_POST(url,json);
-    
-    }
+
 
 
 function sendDetalhes(){
@@ -288,11 +303,12 @@ function loadProfile(user,conteudo){
         
         for(let i = 0; i < count;i++){
             const data = new Date(conteudo[i].data).toString().substring(3,24);
-            var opcaoPost1 = "<ul class=\"nav nav-pills post_opcao\">\n  <li class=\"dropdown\">\n    <a class=\"dropdown-toggle\"\n       data-toggle=\"dropdown\"\n       href=\"#\">...</a>\n    <ul class=\"dropdown-menu\">\n      <!-- links -->\n <li><a class=\"editar-conteudo conteudo-ajuste\" data-id_conteudo=\""+conteudo[i].id_conteudo+"\">Editar</a></li> <li><a class=\"excluir-conteudo conteudo-ajuste\" data-id_conteudo=\""+conteudo[i].id_conteudo+"\">Excluir</a></li>   </ul>\n  </li>\n</ul>";    
-            document.querySelector('.publicacao').insertAdjacentHTML('afterend',"<div class=\"postagem\" data-id_conteudo=\""+conteudo[i].id_conteudo+"\">"+opcaoPost1+"<div class=\"post-img\"></div><h5>"+nome+"</h5><small>"+data+"</small><div class=\"conteudo\"></div></div>");
+            const id_conteudo = conteudo[i].id_conteudo;
+            var opcaoPost1 = "<ul class=\"nav nav-pills post_opcao\">\n  <li class=\"dropdown\">\n    <a class=\"dropdown-toggle\"\n       data-toggle=\"dropdown\"\n       href=\"#\">...</a>\n    <ul class=\"dropdown-menu\">\n      <!-- links -->\n <li><a class=\"editar-conteudo conteudo-ajuste\" data-id_conteudo=\""+id_conteudo+"\">Editar</a></li> <li><a class=\"excluir-conteudo conteudo-ajuste\" data-id_conteudo=\""+id_conteudo+"\">Excluir</a></li>   </ul>\n  </li>\n</ul>";    
+            document.querySelector('.all-publicacao').insertAdjacentHTML('afterbegin',"<div class=\"postagem\" >"+opcaoPost1+"<div class=\"post-img\"></div><h5>"+nome+"</h5><small>"+data+"</small><div class=\"conteudo\" data-id_conteudo=\""+id_conteudo+"\"></div></div>");
             document.querySelector('.conteudo').textContent = conteudo[i].texto;
-            document.querySelector("a[data-id_conteudo=\""+conteudo[i].id_conteudo+"\"].editar-conteudo").addEventListener('click', function(){console.log(conteudo[i].id_conteudo + " - Editar")});
-            document.querySelector("a[data-id_conteudo=\""+conteudo[i].id_conteudo+"\"].excluir-conteudo").addEventListener('click', function(){console.log(conteudo[i].id_conteudo + " - Excluir")});
+            document.querySelector("a[data-id_conteudo=\""+id_conteudo+"\"].editar-conteudo").addEventListener('click', function(){console.log(id_conteudo + " - Editar"); updatePostagem(id_conteudo);});
+            document.querySelector("a[data-id_conteudo=\""+id_conteudo+"\"].excluir-conteudo").addEventListener('click', function(){console.log(id_conteudo + " - Excluir")});
        
         }
 
