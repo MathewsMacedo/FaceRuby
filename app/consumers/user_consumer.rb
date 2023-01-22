@@ -2,6 +2,7 @@ class UserConsumer < Racecar::Consumer
     subscribes_to "users-upsert"
 
     def process(message)
+        return if message.value.blank?
         data = JSON.parse(message.value, symbolize_names: true)
         
         usuario = Usuario.find_by(username: data[:username]).presence || Usuario.new

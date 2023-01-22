@@ -7,6 +7,7 @@ RUN apk --update --upgrade add \
       sqlite-dev\
       build-base\
       nodejs\
+      librdkafka librdkafka-dev\
       tzdata
 
 ENV INSTALL_PATH /game-ms

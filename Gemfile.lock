@@ -73,8 +73,8 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
-    delivery_boy (1.1.0)
-      king_konf (~> 1.0)
+    delivery_boy (1.0.1)
+      king_konf (~> 0.3)
       ruby-kafka (~> 1.0)
     digest (3.1.1)
     digest-crc (0.6.4)
@@ -114,7 +114,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    king_konf (1.0.1)
+    king_konf (0.3.7)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -154,9 +154,9 @@ GEM
     public_suffix (4.0.7)
     puma (3.12.6)
     racc (1.6.2)
-    racecar (2.6.0)
-      king_konf (~> 1.0.0)
-      rdkafka (~> 0.10.0)
+    racecar (1.1.0)
+      king_konf (~> 0.3.7)
+      ruby-kafka (~> 1.0)
     rack (2.2.6.2)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
@@ -263,9 +263,10 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   puma (~> 3.11)
-  racecar
+  racecar (= 1.1.0)
   rack-cors
   rails (~> 5.2.3)
+  rdkafka
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
