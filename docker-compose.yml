@@ -1,0 +1,64 @@
+version: '3'
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    networks: 
+      - internal
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    networks: 
+      - internal
+    depends_on:
+      - zookeeper
+    ports:
+      - 9092:9092
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,EXTERNAL://kafka:9092,EXTERNAL2://kafka:9093,EXTERNAL3://kafka:9094,EXTERNAL4://kafka:9095
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,EXTERNAL:PLAINTEXT,EXTERNAL2:PLAINTEXT,EXTERNAL3:PLAINTEXT,EXTERNAL4:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
+      KAFKA_CREATE_TOPICS: order-topic:3:1
+
+  kafdrop:
+    image: obsidiandynamics/kafdrop:latest
+    networks: 
+      - internal
+    depends_on:
+      - kafka
+    ports:
+      - 19000:9000
+    environment:
+      KAFKA_BROKERCONNECT: kafka:29092
+  faceruby-ms:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: up_faceruby
+    depends_on:
+      - kafka
+    networks: 
+      - internal
+    ports:
+      - 3000:3000
+  account-ms:
+    build:
+      context: ../rails-jwt/.
+      dockerfile: Dockerfile
+    container_name: up_account_ms
+    depends_on:
+      - kafka
+    networks: 
+      - internal
+    ports:
+      - 3001:3001
+
+networks:
+  internal:
+    driver: bridge

@@ -1,22 +1,34 @@
 class CadastroUsuarioController < ApplicationController
 
     def create 
-        @usuario = Usuario.new usuario_params
-        if @usuario.save
-            respond_to do |format|
-                format.json { head 201 }
-            end
+        begin
+            payload = {
+                name: usuario_params[:nome] + " "+ usuario_params[:sobrenome],
+                email: usuario_params[:email],
+                username: usuario_params[:username],
+                password: usuario_params[:senha],
+                password_confirmation: usuario_params[:senha],
+
+            }
+
+
+            puts payload
+
+            response = Faraday.post 'http://localhost:3001/api/restrito/v1/user/users', payload, {}
+        rescue => e
+            render json: { message: "Ocorreu um erro, tente novamente mais tarde!"}, status: 500
         end
+
+        if response.status > 400
+            render json: { message: "Dados inválido, revise os dados e tente novamente"}, status: 400
+        end
+
+        render json: {}, status: 201
     end
 
     private
 
     def usuario_params   
-        params.require(:usuario).permit(:nome,:sobrenome,:email,:senha,:data_nasc,:sexo)
+        params.require(:usuario).permit(:nome,:sobrenome,:email,:senha,:data_nasc,:sexo, :username)
     end
-
-    def set_usuario
-        @usuario = Usuario.find(params[:id])
-    end
-
 end

@@ -6,10 +6,28 @@ class LoginController < ApplicationController
     end
 
     def create
-        usuario = findUser
+        if login_params[:username].blank?
+            begin
+                payload = {
+                    email: login_params[:email],
+                    password: login_params[:senha],
+                }
+                response = Faraday.post 'http://localhost:3001/api/restrito/v1/auth/login',payload , {}
+            rescue => e
+                render json: { error:  'Ocorreu um erro, tente novamente mais tarde' }, status: 500  && return
+            end
+            
+            if response.status > 400
+
+                render json: { error:  'Usuario ou senha inválida' }, status: 400  && return
+            end
+        end
+           
+        usuario = Usuario.find_by(username: login_params[:username].presence || JSON.parse(response.body)["username"])
+        
         if !usuario.blank?
             respond_to do |format|
-                format.json {render :json => usuario}
+                format.json {render :json => response&.body.presence || {username: login_params[:username]}}
             end
             return
         end
@@ -20,19 +38,16 @@ class LoginController < ApplicationController
 
     def findUser
         user = Usuario.new login_params
-        if user.id.nil? 
-        usuario = Usuario.where("email = ? and senha = ?",user.email,user.senha) 
-        else
-        usuario = Usuario.where("id = ? and email = ? and senha = ?",user.id, user.email, user.senha) 
-        end
+        
+        usuario = Usuario.where(username: user.username) 
     end
 
 
     def login_params
-        params.require(:usuario).permit(:id,:email,:senha)
+        params.require(:usuario).permit(:username,:email,:senha)
     end
  
     def set_login
-        @usuario = Usuario.id(params[:id]);
+        @usuario = Usuario.username(params[:username]);
     end
 end

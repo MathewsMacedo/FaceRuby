@@ -13,7 +13,7 @@ class ProfileController < ApplicationController
 
     
     def show 
-        profile = Usuario.where("id = ?", params[:id])  
+        profile = Usuario.where("username = ?", params[:username])  
         render :json => profile[0]
     end
 
@@ -33,7 +33,7 @@ class ProfileController < ApplicationController
   
 
     def getConteudo
-        usuario = Usuario.where("id = ?", params[:id]) 
+        usuario = Usuario.where("username = ?", params[:username]) 
         user  = usuario[0]
         conteudos = Conteudo.where("id_usuario = ?",user.id)
         post = []
@@ -49,8 +49,9 @@ class ProfileController < ApplicationController
     def conteudo_create
         usuario = findUser
         if !usuario.blank?  
-            conteudo = Conteudo.new conteudo_params
+            conteudo = Conteudo.new({id_usuario: usuario[0].id, texto: conteudo_params[:texto]})
             if conteudo.save
+                DeliveryBoy.deliver( conteudo.to_json, topic: 'contents-upsert')
                 respond_to do |format|
                     format.json { head 200 }
                 end
@@ -78,24 +79,24 @@ class ProfileController < ApplicationController
 
 
     def usuario_params
-        params.require(:usuario).permit(:id,:email,:senha)
+        params.require(:usuario).permit(:id,:username,:email,:senha)
     end
 
     def biografia_params
-        params.require(:usuario).permit(:id,:email,:senha,:biografia)
+        params.require(:usuario).permit(:id,:username,:email,:senha,:biografia)
     end
 
     def detalhes_params
-        params.require(:usuario).permit(:id,:email,:senha,:cidade_atual,:cidade_natal,:estado_civil)
+        params.require(:usuario).permit(:id,:username,:email,:senha,:cidade_atual,:cidade_natal,:estado_civil)
     end
 
     def conteudo_params
-        params.require(:conteudo).permit(:id_usuario,:texto)
+        params.require(:conteudo).permit(:username, :id_usuario,:texto)
     end
 
     def findUser
         user = Usuario.new usuario_params
-        usuario = Usuario.where("id = ? and email = ? and senha = ?",user.id, user.email, user.senha) 
+        usuario = Usuario.where("username = ? ",user.username) 
     end
 
 end

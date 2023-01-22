@@ -1,9 +1,7 @@
 
 function getSessaoJSON(){
-    const email = localStorage.getItem("email");
-    const senha = localStorage.getItem("senha");
-    const id = localStorage.getItem("id");
-    const usuario = {usuario:{id: id,email: email,senha: senha}}
+    const username = localStorage.getItem("username");
+    const usuario = {usuario:{username: username}}
 
     return usuario;
 }
@@ -12,8 +10,10 @@ function sendVerSessao(){
 
     const url = '/login'
     const json = getSessaoJSON();
-    console.log(json);
-    fetch(url, {
+
+    const token = localStorage.getItem("token");
+    if (token !== null && token !== undefined) {
+      fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -37,6 +37,8 @@ function sendVerSessao(){
 
         
     });
+    }
+    
 }
 
 document.addEventListener("turbolinks:load", sendVerSessao());

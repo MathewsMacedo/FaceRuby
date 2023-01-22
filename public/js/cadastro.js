@@ -4,10 +4,11 @@ function getCadastroJSON() {
     var sobrenome = document.querySelector('#sobrenome').value;
     var email = document.querySelector('#email').value.toString().toLowerCase();
     var senha =  document.querySelector('#senha').value;
-    var data_nasc = document.querySelector('#data_nascimento').value;
+    //var data_nasc = document.querySelector('#data_nascimento').value;
+    var username = document.querySelector('#username').value;
     var sexo = document.querySelector('input[name="sexo"]:checked').value;
 
-    var cadastro = {usuario:{nome: nome,sobrenome:sobrenome,email: email,senha: senha,data_nasc: data_nasc,sexo: sexo}}
+    var cadastro = {usuario:{nome: nome,sobrenome:sobrenome,email: email,senha: senha,sexo: sexo, username:username}}
 
     return cadastro;
 
@@ -45,7 +46,7 @@ function cadastroUsuario(){
 
 function cadastro(){
    
-    document.querySelector('#btn-cadastro').addEventListener('click',function(){ alert('ola'); cadastroUsuario()});
+    document.querySelector('#btn-cadastro').addEventListener('click',function(){ alert('Cadastro concluido com sucesso ;)'); cadastroUsuario()});
 
 
 }

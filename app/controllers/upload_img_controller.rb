@@ -14,8 +14,7 @@ class UploadImgController < ApplicationController
     end
 
     def findUser
-        user = Usuario.new img_params
-        usuario = Usuario.where("email = ? and senha = ?",user.email,user.senha) 
+        usuario = Usuario.where("username = ?",img_params[:username]) 
     end
 
     def definir_foto
@@ -34,7 +33,7 @@ class UploadImgController < ApplicationController
     private
 
     def img_params
-        params.require(:usuario).permit(:email,:senha,:img_capa,:img_profile)
+        params.require(:usuario).permit(:username,:img_capa,:img_profile)
     end
 
     def img_capa_params

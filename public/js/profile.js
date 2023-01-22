@@ -4,7 +4,9 @@ var conteudo;
 
 var opcaoPost = "<ul class=\"nav nav-pills post_opcao\">\n  <li class=\"dropdown\">\n    <a class=\"dropdown-toggle\"\n       data-toggle=\"dropdown\"\n       href=\"#\">...</a>\n    <ul class=\"dropdown-menu\">\n      <!-- links -->\n <li><a href=\"#\">Editar</a></li> <li><a href=\"#\">Excluir</a></li>   </ul>\n  </li>\n</ul>";
 
-fetch('/userdata/'+localStorage.getItem('id'))
+
+
+    fetch('/userdata/'+localStorage.getItem('username'))
 .then(res => res.json())
 .then(function(json){
     var usuario = JSON.parse(JSON.stringify(json));
@@ -12,7 +14,7 @@ fetch('/userdata/'+localStorage.getItem('id'))
     loadProfile(usuario,conteudo);
 });
 
-fetch('/getConteudo/'+localStorage.getItem('id'))
+fetch('/getConteudo/'+localStorage.getItem('username'))
 .then(res => res.json())
 .then(function(json){
     var content = JSON.parse(JSON.stringify(json));
@@ -24,47 +26,39 @@ fetch('/getConteudo/'+localStorage.getItem('id'))
 
 
 function getIMGJSON(send){
-    const email = localStorage.getItem('email');
-    const senha = localStorage.getItem('senha');
     var json;
     if(send == '#capa-img'){
-     json = {usuario:{email: email,senha: senha,img_capa: img_base64.toString(),img_profile: null}};
+     json = {usuario:{username:localStorage.getItem('username'), img_capa: img_base64.toString(),img_profile: null}};
     }else{
-        json = {usuario:{email: email,senha: senha,img_capa: null,img_profile: img_base64.toString()}};
+        json = {usuario:{username:localStorage.getItem('username'), img_capa: null,img_profile: img_base64.toString()}};
     }
     return json;
 }
 
 function getBiografiaJSON(){
-    const email = localStorage.getItem('email');
-    const senha = localStorage.getItem('senha');
-    const id = localStorage.getItem('id');
+    const username = localStorage.getItem('username');
     const biografia = document.querySelector('#biografia').value;
-    const json = {usuario:{id: id,email: email,senha: senha,biografia: biografia}}
+    const json = {usuario:{username: username,biografia: biografia}}
     return json;
 }
 
 
 function getDetalhesJSON(){
 
-    const email = localStorage.getItem('email');
-    const senha = localStorage.getItem('senha');
-    const id = localStorage.getItem('id');
+    const username = localStorage.getItem('username');
     const cidadeAtual = document.querySelector('input#cidade-atual').value;
     const cidadeNatal = document.querySelector('input#cidade-natal').value;
     const estadoCivil = document.querySelector('input#estado-civil').value;
-    const json = {usuario:{id: id,email: email,senha: senha,cidade_atual: cidadeAtual,cidade_natal: cidadeNatal,estado_civil: estadoCivil}}
+    const json = {usuario:{username: username,cidade_atual: cidadeAtual,cidade_natal: cidadeNatal,estado_civil: estadoCivil}}
     return json;
 
 }
 
 function getConteudoJSON(){
-    const id_usuario = localStorage.getItem('id');
-    const email = localStorage.getItem('email');
-    const senha = localStorage.getItem('senha');
+    const username = localStorage.getItem('username');
     const texto = document.querySelector('textarea#publicacao').value;
 
-    const json = {conteudo:{id_usuario: id_usuario, texto: texto}, usuario:{id: id_usuario,email: email,senha: senha}}
+    const json = {conteudo:{username: username, texto: texto}, usuario:{username: username}}
     
     return json;
 }

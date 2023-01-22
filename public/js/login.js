@@ -15,7 +15,7 @@ function sendLogin(){
   var senha = document.querySelector('#senha-login').value;
     var url = '/login'
     var json = getLoginJSON();    
-    fetch(url, {
+      fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -36,9 +36,10 @@ function validarStatus(notice){
     if (notice.message == 'Unauthorized'){
       alert('Email ou senha invalido');
     }else{
-      localStorage.setItem('id',notice[0].id);
-      localStorage.setItem('email',notice[0].email);
-      localStorage.setItem('senha',notice[0].senha);
+
+      console.log(notice)
+      localStorage.setItem('token',notice.token);
+      localStorage.setItem('username',notice.username);
       window.location.href = '/profile';
     }
 
