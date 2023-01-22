@@ -16,9 +16,10 @@ class CadastroUsuarioController < ApplicationController
 
             response = Faraday.post 'http://account-ms:3001/api/restrito/v1/user/users', payload, {}
         rescue => e
+            puts e.message
             render json: { message: "Ocorreu um erro, tente novamente mais tarde!"}, status: 500
         end
-
+        
         if response.status > 400
             render json: { message: "Dados inválido, revise os dados e tente novamente"}, status: 400
         end

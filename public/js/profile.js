@@ -232,8 +232,8 @@ function set_POST(url,json){
 }
 
 function logoff(){
-
     localStorage.clear();
+    window.location.href= '/login';
 }
 
 

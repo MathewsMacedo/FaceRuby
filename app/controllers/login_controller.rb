@@ -14,6 +14,7 @@ class LoginController < ApplicationController
                 }
                 response = Faraday.post 'http://account-ms:3001/api/restrito/v1/auth/login',payload , {}
             rescue => e
+                puts e.message
                 render json: { error:  'Ocorreu um erro, tente novamente mais tarde' }, status: 500  && return
             end
             
