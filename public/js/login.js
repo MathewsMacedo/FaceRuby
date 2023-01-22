@@ -36,7 +36,6 @@ function validarStatus(notice){
     if (notice.message == 'Unauthorized'){
       alert('Email ou senha invalido');
     }else{
-
       console.log(notice)
       localStorage.setItem('token',notice.token);
       localStorage.setItem('username',notice.username);

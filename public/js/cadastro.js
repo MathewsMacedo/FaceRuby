@@ -28,7 +28,12 @@ function setPostJSON(){
         body: JSON.stringify(json)
       }).then(function (response) {
         if(response.status == 201){
-          window.location.href= '/profile';
+          document.querySelector('#nome').value = ""
+          document.querySelector('#sobrenome').value = ""
+          document.querySelector('#email').value = ""
+          document.querySelector('#senha').value = ""
+          //var data_nasc = document.querySelector('#data_nascimento').value;
+          document.querySelector('#username').value = ""
         }else{
           window.location.href= '/500';
         }
