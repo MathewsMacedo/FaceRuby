@@ -48,7 +48,7 @@ services:
     ports:
       - 3000:3000
   account-ms:
-    image: mathewsmacedo/faceruby_account-ms:1.0.0
+    image: mathewsmacedo/faceruby_account-ms:1.0.2
     container_name: up_account_ms
     depends_on:
       - kafka

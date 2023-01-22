@@ -12,7 +12,7 @@ class LoginController < ApplicationController
                     email: login_params[:email],
                     password: login_params[:senha],
                 }
-                response = Faraday.post 'http://localhost:3001/api/restrito/v1/auth/login',payload , {}
+                response = Faraday.post 'http://account-ms:3001/api/restrito/v1/auth/login',payload , {}
             rescue => e
                 render json: { error:  'Ocorreu um erro, tente novamente mais tarde' }, status: 500  && return
             end
